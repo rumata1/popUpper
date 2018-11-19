@@ -9,12 +9,13 @@
         popBtnClose: 'класс кнопок закрытия поп-апов', 
         popUp: 'класс контейнеров поп-апов',
         callback: 'функция для коллбеков после вызова поп-апа'
+        oneForAll: 'По умолчанию false, true - только одно окно поп-апа'
         
     });
     
     */
 
-    function popUpper({popBtn, popBtnClose, popUp, pointer, callback}){
+    function popUpper({popBtn, popBtnClose, popUp, oneForAll, callback}){
         this.popBtn = document.querySelectorAll(popBtn);
         this.popUp = document.querySelectorAll(popUp);
         this.popBtnClose = document.querySelectorAll(popBtnClose);
@@ -26,12 +27,23 @@
         
         function start(){
             this.open =(index)=>{
-                this.popUp[index].classList.add('active'); 
+                if(oneForAll){
+                    this.popUp[0].classList.add('active');    
+                }
+                else {
+                    this.popUp[index].classList.add('active');     
+                }
+                
                 this.callback();
             }
             
             this.close =(index)=>{
-                this.popUp[index].classList.remove('active'); 
+                if(oneForAll){
+                    this.popUp[0].classList.remove('active');    
+                }
+                else {
+                    this.popUp[index].classList.remove('active');      
+                } 
             }
             
             for(let i = 0; i < this.popBtn.length; i++){
