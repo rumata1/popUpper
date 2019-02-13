@@ -15,9 +15,8 @@
     */
 
     function popUpper({popBtn, popBtnClose, popUp, pointer, callback, oneForAll}){
-        
-		let paramsObj = arguments;
-		paramsObj.popBtn = document.querySelectorAll(popBtn);
+	let paramsObj = arguments;
+	paramsObj.popBtn = document.querySelectorAll(popBtn);
         paramsObj.popUp = document.querySelectorAll(popUp);
         paramsObj.popBtnClose = document.querySelectorAll(popBtnClose);
         paramsObj.callback = callback || function(){};
